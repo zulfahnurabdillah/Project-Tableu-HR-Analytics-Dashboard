@@ -2,7 +2,7 @@
 
 ## 📋 Deskripsi Proyek
 Proyek ini bertujuan untuk menganalisis **tingkat attrition (karyawan yang keluar)** dalam perusahaan dan mengidentifikasi faktor-faktor yang mempengaruhinya.  
-Analisis dilakukan menggunakan **Excel / Power BI** dengan dataset karyawan yang mencakup informasi tentang usia, departemen, tingkat pendidikan, pekerjaan, dan tingkat kepuasan kerja.
+Analisis dilakukan menggunakan **Excel / Tableu** dengan dataset karyawan yang mencakup informasi tentang usia, departemen, tingkat pendidikan, pekerjaan, dan tingkat kepuasan kerja.
 
 Dashboard interaktif ini membantu HR dalam:
 - Menilai tingkat retensi karyawan.
@@ -15,7 +15,7 @@ Dashboard interaktif ini membantu HR dalam:
 **Nama file:** `HR Data.xlsx`
 
 **Jumlah Data:** ±1.470 baris (karyawan aktif & keluar)  
-**Jumlah Kolom:** 35 kolom
+**Jumlah Kolom:** 13 kolom
 
 **Kolom penting:**
 | Kolom | Deskripsi |
@@ -38,7 +38,7 @@ Dashboard interaktif ini membantu HR dalam:
 
 ## ⚙️ Tools & Teknologi
 - **Microsoft Excel / Tableu** untuk analisis dan visualisasi dashboard.
-- **DAX (Data Analysis Expressions)** untuk perhitungan KPI seperti Attrition Rate.
+- **Tableu Calculation** untuk perhitungan KPI seperti Attrition Rate.
 - **Data Cleaning & Transformation** dilakukan di Power Query.
 - **Visualization Design** dengan warna netral (brown-orange theme) agar mudah dibaca.
 
@@ -51,6 +51,7 @@ Langkah-langkah utama dalam proses pembersihan dan transformasi data:
 3. Membuat kolom tambahan:
    - `AttritionRate` = (Attrition Count / Employee Count) * 100
    - `AgeGroup` = pengelompokan umur (20–24, 25–34, 35–44, 45–54, >55)
-4. Menghitung KPI utama menggunakan **DAX**:
-   ```DAX
-   Attrition Rate = DIVIDE(CALCULATE(COUNT(Employee[Attrition]), Employee[Attrition] = "Yes"), COUNT(Employee[EmployeeNumber]), 0)
+4. Menghitung KPI utama menggunakan **Tableu Calculation**:
+   ```Tableu Calculation
+   SUM(
+    IF [Attrition] = "Yes" THEN 1 ELSE 0 END) / COUNT([EmployeeNumber])
